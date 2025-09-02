@@ -1,0 +1,22 @@
+USE JJUniversityDB;
+
+INSERT INTO tblUsers (email, password, firstName, lastName, address, city, state, zip, role) VALUES
+('alice@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Alice', 'Smith', '123 Main St', 'Phoenix', 'AZ', '85001', 'student'),
+('bob@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Bob', 'Johnson', '456 Oak Ave', 'Tucson', 'AZ', '85701', 'student'),
+('carol@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Carol', 'White', '789 Pine Rd', 'Flagstaff', 'AZ', '86001', 'instructor'),
+('david@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'David', 'Brown', '321 Maple Ln', 'Mesa', 'AZ', '85201', 'student'),
+('emma@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Emma', 'Taylor', '654 Cedar St', 'Phoenix', 'AZ', '85002', 'admin'),
+('frank@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Frank', 'Wright', '987 Birch Blvd', 'Tempe', 'AZ', '85281', 'student'),
+('grace@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Grace', 'Hill', '222 Walnut Way', 'Scottsdale', 'AZ', '85250', 'student'),
+('henry@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Henry', 'Adams', '333 Ash Ave', 'Phoenix', 'AZ', '85003', 'instructor'),
+('isabella@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Isabella', 'Clark', '444 Spruce Ct', 'Glendale', 'AZ', '85301', 'student'),
+('jack@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Jack', 'Davis', '555 Poplar St', 'Peoria', 'AZ', '85345', 'student');
+
+INSERT INTO tblUsers (email, password, firstName, lastName, city, state) VALUES
+('alice@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Alicia', 'Jones', 'Phoenix', 'AZ');
+
+INSERT INTO tblUsers (email, password, firstName, city, state) VALUES
+('noLastName@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'NoLastName', 'Phoenix', 'AZ');
+
+INSERT INTO tblUsers (email, password, firstName, lastName, city, state, role) VALUES
+('invalidrole@example.com', '$2y$10$tsqPKrP7zbRSWrJvaRWB/eEsXZPPbvzv1S1mnFo1NLj3p.s917a/G', 'Invalid', 'Role', 'Phoenix', 'AZ', 'superuser');

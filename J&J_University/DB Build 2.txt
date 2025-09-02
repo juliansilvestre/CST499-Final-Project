@@ -1,0 +1,48 @@
+USE JJUniversityDB;
+
+ALTER TABLE tblCourseOfferings
+ADD COLUMN sectionID INT NOT NULL,
+ADD COLUMN term ENUM('Spring', 'Summer', 'Fall'),
+ADD COLUMN `year` YEAR NOT NULL DEFAULT (YEAR(CURDATE())),
+ADD UNIQUE (courseId, sectionID, term, `year`),
+CHANGE classDays classDays VARCHAR(20) NOT NULL,
+CHANGE startTime startTime TIME NOT NULL,
+CHANGE endTime endTime TIME NOT NULL,
+CHANGE capacityLimit capacityLimit INT(11) NOT NULL,
+CHANGE waitlistLimit waitlistLimit INT(11) NOT NULL;
+
+ALTER TABLE tblCourseOfferings
+DROP FOREIGN KEY tblcourseofferings_ibfk_1;
+
+ALTER TABLE tblCourseOfferings
+MODIFY COLUMN courseId VARCHAR(50) NOT NULL;
+
+ALTER TABLE tblCourseOfferings
+ADD CONSTRAINT tblcourseofferings_ibfk_1
+FOREIGN KEY (courseId) REFERENCES tblCourses(courseId)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+CREATE TABLE tblRegistrationPeriods (
+    term ENUM('Spring', 'Summer', 'Fall') NOT NULL,
+    `year` YEAR NOT NULL,
+    isOpen TINYINT(1) NOT NULL DEFAULT 0,
+    PRIMARY KEY (term, year)
+);
+
+INSERT INTO tblRegistrationPeriods (term, year, isOpen)
+VALUES ('Fall', 2025, 1), ('Spring', 2026, 0);
+
+CREATE TABLE tblCart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    courseOffering INT NOT NULL,
+    studentID INT NOT NULL,
+    FOREIGN KEY (courseOffering) REFERENCES tblCourseOfferings(id) ON DELETE CASCADE,
+    FOREIGN KEY (studentID) REFERENCES tblUsers(id) ON DELETE CASCADE,
+    UNIQUE KEY (courseOffering, studentID)
+) ENGINE=InnoDB;
+
+ALTER TABLE tblCourseWaitlist
+ADD COLUMN waitlistTime DATETIME DEFAULT CURRENT_TIMESTAMP;
+
+

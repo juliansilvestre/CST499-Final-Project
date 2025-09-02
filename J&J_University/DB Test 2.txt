@@ -1,0 +1,34 @@
+USE JJUniversityDB;
+
+INSERT INTO tblCourses (courseID, name, description, credits) VALUES
+('CHEM101', 'General Chemistry I', 'Introduction to fundamental chemical principles, including atomic structure, stoichiometry, and chemical reactions.', 4),
+('CHEM102', 'General Chemistry II', 'Continuation of General Chemistry I, covering thermodynamics, kinetics, equilibrium, and electrochemistry.', 4),
+('PHYS201', 'Physics I: Mechanics', 'Newtonian mechanics, energy, momentum, and rotational motion. Designed for science and engineering students.', 4),
+('PHYS301', 'Quantum Physics', 'Advanced study of quantum theory, wavefunctions, Schrödinger equation, and particle behavior.', 3),
+('CS101', 'Introduction to Computer Science', 'Fundamentals of programming, algorithms, and problem-solving using Python.', 3),
+('CS201', 'Data Structures and Algorithms', 'Study of data structures, algorithm design, analysis, and efficiency.', 3),
+('BIO101', 'Introduction to Biology', 'Survey of cellular biology, genetics, evolution, and ecology.', 4),
+('MATH201', 'Calculus II', 'Integral calculus, sequences, series, and applications.', 4),
+('ENG101', 'English Composition', 'Development of critical reading, writing, and analytical skills for academic essays.', 3),
+('HIST210', 'Modern World History', 'Examination of world history from the 18th century to the present, including political, social, and economic changes.', 3);
+
+INSERT INTO tblCourseOfferings (courseID, sectionID, startDate, endDate, classDays, startTime, endTime, capacityLimit, waitlistLimit, term, year) VALUES
+('CHEM101', 1, '2025-08-15', '2025-12-15', 'MWF', '09:00:00', '10:00:00', 200, 20, 'Fall', 2025),
+('CHEM101', 2, '2025-08-16', '2025-12-16', 'TTh', '11:00:00', '12:30:00', 200, 20, 'Fall', 2025),
+('PHYS201', 1, '2025-08-16', '2025-12-16', 'TTh', '10:00:00', '11:30:00', 30, 5, 'Fall', 2025),
+('CS101', 1, '2025-08-17', '2025-12-17', 'MWF', '11:00:00', '12:00:00', 30, 5, 'Fall', 2025),
+('ENG150', 1, '2025-08-18', '2025-12-18', 'TTh', '13:00:00', '14:30:00', 30, 5, 'Fall', 2025),
+('MATH301', 1, '2025-08-19', '2025-12-19', 'MWF', '14:00:00', '15:00:00', 30, 5, 'Fall', 2025),
+('CHEM101', 1, '2026-01-10', '2026-05-10', 'MWF', '09:00:00', '10:00:00', 200, 20, 'Spring', 2026),
+('CHEM101', 2, '2026-01-11', '2026-05-11', 'TTh', '11:00:00', '12:30:00', 200, 20, 'Spring', 2026),
+('PHYS201', 1, '2026-01-11', '2026-05-11', 'TTh', '10:00:00', '11:30:00', 30, 5, 'Spring', 2026),
+('CS101', 1, '2026-01-12', '2026-05-12', 'MWF', '11:00:00', '12:00:00', 30, 5, 'Spring', 2026),
+('ENG150', 1, '2026-01-13', '2026-05-13', 'TTh', '13:00:00', '14:30:00', 30, 5, 'Spring', 2026),
+('MATH301', 1, '2026-01-14', '2026-05-14', 'MWF', '14:00:00', '15:00:00', 30, 5, 'Spring', 2026);
+
+INSERT INTO tblCourseRegistration (courseOfferingID, userID) VALUES
+(30, 1),
+(30, 2),
+(30, 4),
+(30, 6),
+(30, 7);

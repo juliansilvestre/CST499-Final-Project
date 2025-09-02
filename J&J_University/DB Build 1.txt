@@ -1,0 +1,54 @@
+CREATE DATABASE IF NOT EXISTS JJUniversityDB;
+USE JJUniversityDB;
+
+CREATE TABLE tblUsers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    firstName VARCHAR(100) NOT NULL,
+    lastName VARCHAR(100) NOT NULL,
+    address VARCHAR(255),
+    city VARCHAR(100),
+    state CHAR(2),
+    zip VARCHAR(15),
+    role ENUM('student', 'instructor', 'admin') DEFAULT 'student'
+) ENGINE=InnoDB;
+
+CREATE TABLE tblCourses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    courseId VARCHAR(50) NOT NULL UNIQUE,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    credits INT NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE tblCourseOfferings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    courseId INT,
+    startDate DATE NOT NULL,
+    endDate DATE NOT NULL,
+    classDays VARCHAR(20),
+    startTime TIME,
+    endTime TIME,
+    capacityLimit INT DEFAULT NULL,
+    waitlistLimit INT DEFAULT NULL,
+    FOREIGN KEY (courseId) REFERENCES tblCourses(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE tblCourseRegistration (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    courseOfferingId INT,
+    userId INT,
+    FOREIGN KEY (courseOfferingId) REFERENCES tblCourseOfferings(id) ON DELETE CASCADE,
+    FOREIGN KEY (userId) REFERENCES tblUsers(id) ON DELETE RESTRICT,
+    UNIQUE (courseOfferingId, userId)
+) ENGINE=InnoDB;
+
+CREATE TABLE tblCourseWaitlist (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    courseOfferingId INT,
+    userId INT,
+    FOREIGN KEY (courseOfferingId) REFERENCES tblCourseOfferings(id) ON DELETE CASCADE,
+    FOREIGN KEY (userId) REFERENCES tblUsers(id) ON DELETE CASCADE,
+    UNIQUE (courseOfferingId, userId)
+) ENGINE=InnoDB;
